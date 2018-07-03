@@ -1,2 +1,4 @@
 Libraries to use:
 https://www.jqwidgets.com/react/
+https://github.com/reactstrap/reactstrap - at the end
+https://devexpress.github.io/devextreme-reactive/react/grid/ - tables using ReactStrap

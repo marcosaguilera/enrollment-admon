@@ -5,12 +5,13 @@ import PropType from 'prop-types';
 
 //Components declaration
 import Login from './Modulars/Login/Login'
+import Main from './Modulars/Main/Main'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-          <Login />
+          <Main />
       </div>
     );
   }
