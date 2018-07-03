@@ -1,6 +1,7 @@
 // Dependencies
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 
 // Import assets
 import './style5.css';
@@ -13,6 +14,7 @@ class Main extends Component {
 
     this.handleSearch    = this.handleSearch.bind(this);
     this.handleOnChange  = this.handleOnChange.bind(this);
+    this.toggle = this.toggle.bind(this);
 
     this.state = {
       objectId              : '',
@@ -39,7 +41,13 @@ class Main extends Component {
       columns               : [],
 
       // State
-      search_code           : ''
+      search_code           : '',
+
+      // UI states
+      modal                 : false,
+
+      // Modal States
+      
     };
   }
 
@@ -155,6 +163,15 @@ class Main extends Component {
   edit = (data) => { 
         // Do whatever you want
         console.log(data);
+        console.log(data.objectId);
+        this.toggle();
+        
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   render() {
@@ -252,6 +269,44 @@ class Main extends Component {
                                     })}
                                 </tbody>
                             </table> 
+
+                            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} style={{width:'800px'}}>
+                                <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                                <ModalBody>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Conceptos</h5>
+                                                <hr/>
+                                                <div class="form-group">
+                                                    <label for="inputEmail4">Derecho matrícula plena</label>
+                                                    <input type="email" class="form-control" id="inputEmail4" placeholder="$ 0.0" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail4">Bibliobanco</label>
+                                                    <input type="email" class="form-control" id="inputEmail4" placeholder="$ 0.0" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail4">Derecho por pago anualidades 7.5%</label>
+                                                    <input type="email" class="form-control" id="inputEmail4" placeholder="$ 0.0" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail4">Derecho por pago anualidades 15%</label>
+                                                    <input type="email" class="form-control" id="inputEmail4" placeholder="$ 0.0" />
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control" placeholder="Last name" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </ModalBody>
+                                <ModalFooter>
+                                    <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
+                                    <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                                </ModalFooter>
+                            </Modal>
+
                         </div>
                 </main>
             </div>
