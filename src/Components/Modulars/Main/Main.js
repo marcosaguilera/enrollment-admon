@@ -270,33 +270,79 @@ class Main extends Component {
                                 </tbody>
                             </table> 
 
-                            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} style={{width:'800px'}}>
-                                <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                            <Modal id="modalWindow" isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                                <ModalHeader toggle={this.toggle}></ModalHeader>
                                 <ModalBody>
-                                    <form>
+                                    <div class="row">
+                                        <div class="col-12">Marcos Antonio Aguilera Ely</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">.col-6</div>
+                                        <div class="col-6">.col-6</div>
+                                    </div>
+                                    <form class="py-3">
                                         <div class="row">
                                             <div class="col">
-                                                <h5>Conceptos</h5>
+                                                <h6>Conceptos</h6>
                                                 <hr/>
                                                 <div class="form-group">
                                                     <label for="inputEmail4">Derecho matrícula plena</label>
-                                                    <input type="email" class="form-control" id="inputEmail4" placeholder="$ 0.0" />
+                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail4">Bibliobanco</label>
-                                                    <input type="email" class="form-control" id="inputEmail4" placeholder="$ 0.0" />
+                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail4">Derecho por pago anualidades 7.5%</label>
-                                                    <input type="email" class="form-control" id="inputEmail4" placeholder="$ 0.0" />
+                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail4">Derecho por pago anualidades 15%</label>
-                                                    <input type="email" class="form-control" id="inputEmail4" placeholder="$ 0.0" />
+                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <input type="text" class="form-control" placeholder="Last name" />
+                                                <h6>Descuentos</h6>
+                                                <hr/>
+                                                <div class="form-group">
+                                                    <label for="inputEmail4">Hijo de ex-alumno</label>
+                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail4">Ex alumno Santa Barbara Preschool</label>
+                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail4">Ex alumno Jardín Convenio</label>
+                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail4">2do Hijo</label>
+                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                </div>
+                                                
+                                            </div>
+                                            <div className="col">
+                                                <h6>&nbsp;</h6>
+                                                <hr/>
+                                                <div class="form-group">
+                                                    <label for="inputEmail4">3er Hijo</label>
+                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail4">4to Hijo</label>
+                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail4">Empleado</label>
+                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail4">Otro</label>
+                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                </div>
+
                                             </div>
                                         </div>
                                     </form>
