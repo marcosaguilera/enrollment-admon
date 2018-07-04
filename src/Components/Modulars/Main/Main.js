@@ -171,9 +171,16 @@ class Main extends Component {
         this.setState({
             search_code: e.target.value
         }, () => {
-            console.log("Code for search " + this.state.search_code);
+            console.log("Value " + this.state.search_code);
         })     
-     }
+    }
+    if(e.target.id === 'input-matricula-plena'){
+        this.setState({
+            modal_tarifa_plena: e.target.value
+        }, () => {
+            console.log("Value " + this.state.search_code);
+        })     
+    }
 
   }
 
