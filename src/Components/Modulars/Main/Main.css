@@ -1,3 +1,7 @@
 #cursorPointer{
     cursor: pointer !important;
 }
+
+#modalWindow {
+    max-width: 880px !important;
+}
