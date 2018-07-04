@@ -47,7 +47,24 @@ class Main extends Component {
       modal                 : false,
 
       // Modal States
-      
+      modal_objectId              : '',
+      modal_codigo                : '',
+      modal_nombres               : '',
+      modal_apellidos             : '',
+      modal_tarifa_plena          : 0,
+      modal_bibliobanco           : 0,
+      modal_tarifa_reducida_7_5   : 0,
+      modal_tarifa_reducida_15    : 0,
+      modal_descuento_exalumno    : 0,
+      modal_descuento_2do_hno     : 0,
+      modal_descuento_3er_hno     : 0,
+      modal_descuento_4to_hno     : 0,
+      modal_empleado              : 0,
+      modal_santa_barbara         : 0,
+      modal_convenio              : 0,
+      modal_otros                 : 0,
+      modal_grado                 : ''
+
     };
   }
 
@@ -164,7 +181,29 @@ class Main extends Component {
         // Do whatever you want
         console.log(data);
         console.log(data.objectId);
-        this.toggle();
+
+        this.setState({
+            modal_objectId             :  data.objectId,
+            modal_codigo               :  data.Codigo,
+            modal_nombres              :  data.Nombres,
+            modal_apellidos            :  data.Apellidos,
+            modal_tarifa_plena         :  data.Derecho_Matricula_Plena,
+            modal_bibliobanco          :  data.Bibliobanco,
+            modal_tarifa_reducida_7_5  :  data.Derecho_por_pago_anualidades_7_5,
+            modal_tarifa_reducida_15   :  data.Derecho_por_pago_anualidades_15,
+            modal_descuento_exalumno   :  data.Hijo_Exalumno,
+            modal_descuento_2do_hno    :  data.Hijo_2,
+            modal_descuento_3er_hno    :  data.Hijo_3,
+            modal_descuento_4to_hno    :  data.Hijo_4,
+            modal_convenio             :  data.Jardin_Convenio,
+            modal_empleado             :  data.Empleado,
+            modal_santa_barbara        :  data.SantaBarbara,
+            modal_otros                :  data.Otros,
+            modal_grado                :  data.Grado
+
+        } , () =>  {
+            this.toggle();
+        })
         
   }
 
@@ -247,7 +286,6 @@ class Main extends Component {
                                 <thead>
                                 <tr>
                                     <th scope="col"><center>Edit</center></th>
-                                    <th scope="col"><center>#</center></th>
                                     <th scope="col"><center>Código</center></th>
                                     <th scope="col">Nombres</th>
                                     <th scope="col">Apellidos</th>
@@ -259,7 +297,6 @@ class Main extends Component {
                                         return (
                                             <tr key = {key} >
                                                 <td><center><button onClick={() => this.edit(item)} > Edit </button></center></td>
-                                                <td><center>{item.objectId}</center></td>
                                                 <td><center>{item.Codigo}</center></td>
                                                 <td>{item.Nombres}</td>
                                                 <td>{item.Apellidos}</td>
@@ -273,74 +310,78 @@ class Main extends Component {
                             <Modal id="modalWindow" isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                                 <ModalHeader toggle={this.toggle}></ModalHeader>
                                 <ModalBody>
-                                    <div class="row">
-                                        <div class="col-12">Marcos Antonio Aguilera Ely</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6">.col-6</div>
-                                        <div class="col-6">.col-6</div>
-                                    </div>
-                                    <form class="py-3">
-                                        <div class="row">
-                                            <div class="col">
+                                    <main className="shadow-sm p-3 mb-2 bg-white rounded">
+                                        <div className="row">
+                                            <div className="col-12"><h3>{this.state.modal_nombres} {this.state.modal_apellidos}</h3></div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col"><h4>Código: {this.state.modal_codigo}</h4></div>
+                                            <div className="col"><h4>{this.state.modal_grado}</h4></div>
+                                            <div className="col"></div>
+                                            <div className="col"></div>
+                                        </div>
+                                    </main>
+                                    <form className="py-3">
+                                        <div className="row">
+                                            <div className="col">
                                                 <h6>Conceptos</h6>
                                                 <hr/>
-                                                <div class="form-group">
-                                                    <label for="inputEmail4">Derecho matrícula plena</label>
-                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                <div className="form-group">
+                                                    <label htmlFor="inputEmail4">Derecho matrícula plena</label>
+                                                    <input type="text" value={this.state.modal_tarifa_plena} className="form-control form-control-sm" id="input-matricula-plena" placeholder="$ 0.0" />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail4">Bibliobanco</label>
-                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                <div className="form-group">
+                                                    <label htmlFor="inputEmail4">Bibliobanco</label>
+                                                    <input type="text" value={this.state.modal_bibliobanco} className="form-control form-control-sm" id="input-bibliobanco" placeholder="$ 0.0" />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail4">Derecho por pago anualidades 7.5%</label>
-                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                <div className="form-group">
+                                                    <label htmlFor="inputEmail4">Derecho por pago anualidades 7.5%</label>
+                                                    <input type="text" value={this.state.modal_tarifa_reducida_7_5} className="form-control form-control-sm" id="input-matricula-75" placeholder="$ 0.0" />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail4">Derecho por pago anualidades 15%</label>
-                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                <div className="form-group">
+                                                    <label htmlFor="inputEmail4">Derecho por pago anualidades 15%</label>
+                                                    <input type="text" value={this.state.modal_tarifa_reducida_15} className="form-control form-control-sm" id="input-matricula-15" placeholder="$ 0.0" />
                                                 </div>
                                             </div>
-                                            <div class="col">
+                                            <div className="col">
                                                 <h6>Descuentos</h6>
                                                 <hr/>
-                                                <div class="form-group">
-                                                    <label for="inputEmail4">Hijo de ex-alumno</label>
-                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                <div className="form-group">
+                                                    <label htmlFor="inputEmail4">Hijo de ex-alumno</label>
+                                                    <input type="text" value={this.state.modal_descuento_exalumno} className="form-control form-control-sm" id="input-ex-alumno" placeholder="$ 0.0" />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail4">Ex alumno Santa Barbara Preschool</label>
-                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                <div className="form-group">
+                                                    <label htmlFor="inputEmail4">Ex alumno Santa Barbara Preschool</label>
+                                                    <input type="text" value={this.state.modal_santa_barbara} className="form-control form-control-sm" id="input-santabarbara" placeholder="$ 0.0" />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail4">Ex alumno Jardín Convenio</label>
-                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                <div className="form-group">
+                                                    <label htmlFor="inputEmail4">Ex alumno Jardín Convenio</label>
+                                                    <input type="text" value={this.state.modal_convenio} className="form-control form-control-sm" id="input-jardin-convenio" placeholder="$ 0.0" />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail4">2do Hijo</label>
-                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                <div className="form-group">
+                                                    <label htmlFor="inputEmail4">2do Hijo</label>
+                                                    <input type="text" value={this.state.modal_descuento_2do_hno} className="form-control form-control-sm" id="input-2do-hijo" placeholder="$ 0.0" />
                                                 </div>
                                                 
                                             </div>
                                             <div className="col">
                                                 <h6>&nbsp;</h6>
                                                 <hr/>
-                                                <div class="form-group">
-                                                    <label for="inputEmail4">3er Hijo</label>
-                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                <div className="form-group">
+                                                    <label htmlFor="inputEmail4">3er Hijo</label>
+                                                    <input type="text" value={this.state.modal_descuento_3er_hno} className="form-control form-control-sm" id="input-3er-hijo" placeholder="$ 0.0" />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail4">4to Hijo</label>
-                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                <div className="form-group">
+                                                    <label htmlFor="inputEmail4">4to Hijo</label>
+                                                    <input type="text" value={this.state.modal_descuento_4to_hno} className="form-control form-control-sm" id="input-4to-hijo" placeholder="$ 0.0" />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail4">Empleado</label>
-                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                <div className="form-group">
+                                                    <label htmlFor="inputEmail4">Empleado</label>
+                                                    <input type="text" value={this.state.modal_empleado} className="form-control form-control-sm" id="input-empleado" placeholder="$ 0.0" />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail4">Otro</label>
-                                                    <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="$ 0.0" />
+                                                <div className="form-group">
+                                                    <label htmlFor="inputEmail4">Otro</label>
+                                                    <input type="text" value={this.state.modal_otros} className="form-control form-control-sm" id="input-otro" placeholder="$ 0.0" />
                                                 </div>
 
                                             </div>
