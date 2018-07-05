@@ -1,7 +1,7 @@
 // Dependencies
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
 // Import assets
 import './style5.css';
@@ -313,37 +313,32 @@ class Main extends Component {
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Home</a>
                         <ul className="collapse list-unstyled" id="homeSubmenu">
                             <li>
-                                <a href="#">Home 1</a>
+                                <a href={null}>Home 1</a>
                             </li>
                             <li>
-                                <a href="#">Home 2</a>
+                                <a href={null}>Home 2</a>
                             </li>
                             <li>
-                                <a href="#">Home 3</a>
+                                <a href={null}>Home 3</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">About</a>
+                        <a href={null}>About</a>
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Pages</a>
                         <ul className="collapse list-unstyled" id="pageSubmenu">
                             <li>
-                                <a href="#">Page 1</a>
+                                <a href={null}>Page 1</a>
                             </li>
                             <li>
-                                <a href="#">Page 2</a>
+                                <a href={null}>Page 2</a>
                             </li>
                             <li>
-                                <a href="#">Page 3</a>
+                                <a href={null}>Page 3</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
+                    
                 </ul>
             </nav>
 
@@ -412,19 +407,39 @@ class Main extends Component {
                                                 <hr/>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Derecho matrícula plena</label>
-                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_tarifa_plena} className="form-control form-control-sm" id="input-matricula-plena" placeholder="$ 0.0" />
+                                                    <div className="input-group input-group-sm mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text">$</span>
+                                                        </div>
+                                                        <input type="text" onChange={this.handleOnChange} value={this.state.modal_tarifa_plena} className="form-control form-control-sm" id="input-matricula-plena" placeholder="$ 0.0" />
+                                                    </div>
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Bibliobanco</label>
-                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_bibliobanco} className="form-control form-control-sm" id="input-bibliobanco" placeholder="$ 0.0" />
+                                                    <div className="input-group input-group-sm mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text">$</span>
+                                                        </div>
+                                                        <input type="text" onChange={this.handleOnChange} value={this.state.modal_bibliobanco} className="form-control form-control-sm" id="input-bibliobanco" placeholder="$ 0.0" />
+                                                    </div>     
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Derecho por pago anualidades 7.5%</label>
-                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_tarifa_reducida_7_5} className="form-control form-control-sm" id="input-matricula-75" placeholder="$ 0.0" />
+                                                    <div className="input-group input-group-sm mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text">$</span>
+                                                        </div>
+                                                        <input type="text" onChange={this.handleOnChange} value={this.state.modal_tarifa_reducida_7_5} className="form-control form-control-sm" id="input-matricula-75" placeholder="$ 0.0" />
+                                                    </div>
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Derecho por pago anualidades 15%</label>
-                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_tarifa_reducida_15} className="form-control form-control-sm" id="input-matricula-15" placeholder="$ 0.0" />
+                                                    <div className="input-group input-group-sm mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text">$</span>
+                                                        </div>
+                                                        <input type="text" onChange={this.handleOnChange} value={this.state.modal_tarifa_reducida_15} className="form-control form-control-sm" id="input-matricula-15" placeholder="$ 0.0" />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="col">
@@ -432,40 +447,79 @@ class Main extends Component {
                                                 <hr/>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Hijo de ex-alumno</label>
-                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_descuento_exalumno} className="form-control form-control-sm" id="input-ex-alumno" placeholder="$ 0.0" />
+                                                    <div className="input-group input-group-sm mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text">$</span>
+                                                        </div>
+                                                        <input type="text" onChange={this.handleOnChange} value={this.state.modal_descuento_exalumno} className="form-control form-control-sm" id="input-ex-alumno" placeholder="$ 0.0" />
+                                                    </div>
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Ex alumno Santa Barbara Preschool</label>
-                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_santa_barbara} className="form-control form-control-sm" id="input-santabarbara" placeholder="$ 0.0" />
+                                                    <div className="input-group input-group-sm mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text">$</span>
+                                                        </div>
+                                                        <input type="text" onChange={this.handleOnChange} value={this.state.modal_santa_barbara} className="form-control form-control-sm" id="input-santabarbara" placeholder="$ 0.0" />
+                                                    </div>
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Ex alumno Jardín Convenio</label>
-                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_convenio} className="form-control form-control-sm" id="input-jardin-convenio" placeholder="$ 0.0" />
+                                                    <div className="input-group input-group-sm mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text">$</span>
+                                                        </div>
+                                                        <input type="text" onChange={this.handleOnChange} value={this.state.modal_convenio} className="form-control form-control-sm" id="input-jardin-convenio" placeholder="$ 0.0" />
+                                                    </div>
                                                 </div>
                                                 <div className="form-group">
-                                                    <label htmlFor="inputEmail4">2do Hijo</label>
-                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_descuento_2do_hno} className="form-control form-control-sm" id="input-2do-hijo" placeholder="$ 0.0" />
+                                                    <label htmlFor="inputEmail4">Empleado</label>
+                                                    <div className="input-group input-group-sm mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text">$</span>
+                                                        </div>
+                                                        <input type="text" onChange={this.handleOnChange} value={this.state.modal_empleado} className="form-control form-control-sm" id="input-empleado" placeholder="$ 0.0" />
+                                                    </div> 
                                                 </div>
-                                                
                                             </div>
                                             <div className="col">
                                                 <h6>&nbsp;</h6>
                                                 <hr/>
                                                 <div className="form-group">
+                                                    <label htmlFor="inputEmail4">2do Hijo</label>
+                                                    <div className="input-group input-group-sm mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text">$</span>
+                                                        </div>
+                                                        <input type="text" onChange={this.handleOnChange} value={this.state.modal_descuento_2do_hno} className="form-control form-control-sm" id="input-2do-hijo" placeholder="$ 0.0" />
+                                                    </div> 
+                                                </div>
+                                                <div className="form-group">
                                                     <label htmlFor="inputEmail4">3er Hijo</label>
-                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_descuento_3er_hno} className="form-control form-control-sm" id="input-3er-hijo" placeholder="$ 0.0" />
+                                                    <div className="input-group input-group-sm mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text">$</span>
+                                                        </div>
+                                                        <input type="text" onChange={this.handleOnChange} value={this.state.modal_descuento_3er_hno} className="form-control form-control-sm" id="input-3er-hijo" placeholder="$ 0.0" />
+                                                    </div>
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">4to Hijo</label>
-                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_descuento_4to_hno} className="form-control form-control-sm" id="input-4to-hijo" placeholder="$ 0.0" />
-                                                </div>
-                                                <div className="form-group">
-                                                    <label htmlFor="inputEmail4">Empleado</label>
-                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_empleado} className="form-control form-control-sm" id="input-empleado" placeholder="$ 0.0" />
+                                                    <div className="input-group input-group-sm mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text">$</span>
+                                                        </div>
+                                                        <input type="text" onChange={this.handleOnChange} value={this.state.modal_descuento_4to_hno} className="form-control form-control-sm" id="input-4to-hijo" placeholder="$ 0.0" />
+                                                    </div>
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Otro</label>
-                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_otros} className="form-control form-control-sm" id="input-otro" placeholder="$ 0.0" />
+                                                    <div className="input-group input-group-sm mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text">$</span>
+                                                        </div>
+                                                        <input type="text" onChange={this.handleOnChange} value={this.state.modal_otros} className="form-control form-control-sm" id="input-otro" placeholder="$ 0.0" />
+                                                    </div>
                                                 </div>
 
                                             </div>
@@ -473,8 +527,8 @@ class Main extends Component {
                                     </form>
                                 </ModalBody>
                                 <ModalFooter>
-                                    <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-                                    <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                                    <Button color="primary" onClick={this.toggle}>Actualizar</Button>
+                                    <Button color="secondary" onClick={this.toggle}>Cancelar</Button>
                                 </ModalFooter>
                             </Modal>
 

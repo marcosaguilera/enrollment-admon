@@ -1,7 +1,6 @@
 // Dependencies
 import React, { Component } from 'react';
-import { Button, Container, Row, Col } from 'reactstrap';
-import {Link} from 'react-router';
+import { Container, Row, Col } from 'reactstrap';
 
 class Login extends Component {
   constructor(props){
