@@ -291,8 +291,9 @@ class Main extends Component {
             this.setState({
                 modal : false
             }, () =>{
-                this.handleSearch()
+                
             })
+            this.handleSearch()
             return true;
         }
         else{
