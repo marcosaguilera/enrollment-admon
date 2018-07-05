@@ -14,7 +14,7 @@ class Main extends Component {
 
     this.handleSearch    = this.handleSearch.bind(this);
     this.handleOnChange  = this.handleOnChange.bind(this);
-    this.toggle = this.toggle.bind(this);
+    this.toggle          = this.toggle.bind(this);
 
     this.state = {
       objectId              : '',
@@ -176,9 +176,86 @@ class Main extends Component {
     }
     if(e.target.id === 'input-matricula-plena'){
         this.setState({
-            modal_tarifa_plena: e.target.value
+            modal_tarifa_plena: Number(e.target.value)
         }, () => {
-            console.log("Value " + this.state.search_code);
+            console.log("Value " + this.state.modal_tarifa_plena);
+        })     
+    }
+    if(e.target.id === 'input-bibliobanco'){
+        this.setState({
+            modal_bibliobanco: Number(e.target.value)
+        }, () => {
+            console.log("Value " + this.state.modal_bibliobanco);
+        })     
+    }
+    if(e.target.id === 'input-matricula-75'){
+        this.setState({
+            modal_tarifa_reducida_7_5: Number(e.target.value)
+        }, () => {
+            console.log("Value " + this.state.modal_tarifa_reducida_7_5);
+        })     
+    }
+    if(e.target.id === 'input-matricula-15'){
+        this.setState({
+            modal_tarifa_reducida_15: Number(e.target.value)
+        }, () => {
+            console.log("Value " + this.state.modal_tarifa_reducida_15);
+        })     
+    }
+    if(e.target.id === 'input-ex-alumno'){
+        this.setState({
+            modal_descuento_exalumno: Number(e.target.value)
+        }, () => {
+            console.log("Value " + this.state.modal_descuento_exalumno);
+        })     
+    }
+    if(e.target.id === 'input-santabarbara'){
+        this.setState({
+            modal_santa_barbara: Number(e.target.value)
+        }, () => {
+            console.log("Value " + this.state.modal_santa_barbara);
+        })     
+    }
+    if(e.target.id === 'input-jardin-convenio'){
+        this.setState({
+            modal_convenio: Number(e.target.value)
+        }, () => {
+            console.log("Value " + this.state.modal_convenio);
+        })     
+    }
+    if(e.target.id === 'input-2do-hijo'){
+        this.setState({
+            modal_descuento_2do_hno: Number(e.target.value)
+        }, () => {
+            console.log("Value " + this.state.modal_descuento_2do_hno);
+        })     
+    }
+    if(e.target.id === 'input-3er-hijo'){
+        this.setState({
+            modal_descuento_3er_hno: Number(e.target.value)
+        }, () => {
+            console.log("Value " + this.state.modal_descuento_3er_hno);
+        })     
+    }
+    if(e.target.id === 'input-4to-hijo'){
+        this.setState({
+            modal_descuento_4to_hno: Number(e.target.value)
+        }, () => {
+            console.log("Value " + this.state.modal_descuento_4to_hno);
+        })     
+    }
+    if(e.target.id === 'input-empleado'){
+        this.setState({
+            modal_empleado: Number(e.target.value)
+        }, () => {
+            console.log("Value " + this.state.modal_empleado);
+        })     
+    }
+    if(e.target.id === 'input-otro'){
+        this.setState({
+            modal_otros: Number(e.target.value)
+        }, () => {
+            console.log("Value " + this.state.modal_otros);
         })     
     }
 
@@ -335,19 +412,19 @@ class Main extends Component {
                                                 <hr/>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Derecho matrícula plena</label>
-                                                    <input type="text" value={this.state.modal_tarifa_plena} className="form-control form-control-sm" id="input-matricula-plena" placeholder="$ 0.0" />
+                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_tarifa_plena} className="form-control form-control-sm" id="input-matricula-plena" placeholder="$ 0.0" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Bibliobanco</label>
-                                                    <input type="text" value={this.state.modal_bibliobanco} className="form-control form-control-sm" id="input-bibliobanco" placeholder="$ 0.0" />
+                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_bibliobanco} className="form-control form-control-sm" id="input-bibliobanco" placeholder="$ 0.0" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Derecho por pago anualidades 7.5%</label>
-                                                    <input type="text" value={this.state.modal_tarifa_reducida_7_5} className="form-control form-control-sm" id="input-matricula-75" placeholder="$ 0.0" />
+                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_tarifa_reducida_7_5} className="form-control form-control-sm" id="input-matricula-75" placeholder="$ 0.0" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Derecho por pago anualidades 15%</label>
-                                                    <input type="text" value={this.state.modal_tarifa_reducida_15} className="form-control form-control-sm" id="input-matricula-15" placeholder="$ 0.0" />
+                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_tarifa_reducida_15} className="form-control form-control-sm" id="input-matricula-15" placeholder="$ 0.0" />
                                                 </div>
                                             </div>
                                             <div className="col">
@@ -355,19 +432,19 @@ class Main extends Component {
                                                 <hr/>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Hijo de ex-alumno</label>
-                                                    <input type="text" value={this.state.modal_descuento_exalumno} className="form-control form-control-sm" id="input-ex-alumno" placeholder="$ 0.0" />
+                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_descuento_exalumno} className="form-control form-control-sm" id="input-ex-alumno" placeholder="$ 0.0" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Ex alumno Santa Barbara Preschool</label>
-                                                    <input type="text" value={this.state.modal_santa_barbara} className="form-control form-control-sm" id="input-santabarbara" placeholder="$ 0.0" />
+                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_santa_barbara} className="form-control form-control-sm" id="input-santabarbara" placeholder="$ 0.0" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Ex alumno Jardín Convenio</label>
-                                                    <input type="text" value={this.state.modal_convenio} className="form-control form-control-sm" id="input-jardin-convenio" placeholder="$ 0.0" />
+                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_convenio} className="form-control form-control-sm" id="input-jardin-convenio" placeholder="$ 0.0" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">2do Hijo</label>
-                                                    <input type="text" value={this.state.modal_descuento_2do_hno} className="form-control form-control-sm" id="input-2do-hijo" placeholder="$ 0.0" />
+                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_descuento_2do_hno} className="form-control form-control-sm" id="input-2do-hijo" placeholder="$ 0.0" />
                                                 </div>
                                                 
                                             </div>
@@ -376,19 +453,19 @@ class Main extends Component {
                                                 <hr/>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">3er Hijo</label>
-                                                    <input type="text" value={this.state.modal_descuento_3er_hno} className="form-control form-control-sm" id="input-3er-hijo" placeholder="$ 0.0" />
+                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_descuento_3er_hno} className="form-control form-control-sm" id="input-3er-hijo" placeholder="$ 0.0" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">4to Hijo</label>
-                                                    <input type="text" value={this.state.modal_descuento_4to_hno} className="form-control form-control-sm" id="input-4to-hijo" placeholder="$ 0.0" />
+                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_descuento_4to_hno} className="form-control form-control-sm" id="input-4to-hijo" placeholder="$ 0.0" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Empleado</label>
-                                                    <input type="text" value={this.state.modal_empleado} className="form-control form-control-sm" id="input-empleado" placeholder="$ 0.0" />
+                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_empleado} className="form-control form-control-sm" id="input-empleado" placeholder="$ 0.0" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="inputEmail4">Otro</label>
-                                                    <input type="text" value={this.state.modal_otros} className="form-control form-control-sm" id="input-otro" placeholder="$ 0.0" />
+                                                    <input type="text" onChange={this.handleOnChange} value={this.state.modal_otros} className="form-control form-control-sm" id="input-otro" placeholder="$ 0.0" />
                                                 </div>
 
                                             </div>
