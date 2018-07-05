@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 // Import assets
 import './style5.css';
@@ -262,7 +264,8 @@ class Main extends Component {
   }
 
   handleUpdateData = () => {
-        var data                              = new Object();
+        //var data                              = new Object();
+        var data                              = {};
         data.objectId                         = this.state.modal_objectId;
         data.Codigo                           = this.state.modal_codigo;
         data.Apellidos                        = this.state.modal_apellidos;
@@ -283,7 +286,7 @@ class Main extends Component {
         console.log(data);
         
         var retVal = window.confirm("¿Estas seguro de realizar esta acción?");
-        if( retVal == true ){
+        if( retVal === true ){
             this.handlePutParseData(data);
             this.setState({
                 modal : false
@@ -418,10 +421,10 @@ class Main extends Component {
                                     <button className="btn btn-outline-success my-2 my-sm-0" type="search" onClick={this.handleSearch}>Buscar</button>
                                 </form>
                             </nav>
-                            <table className="table table-hover table-bordered">
+                            <table className="table table-hover ">
                                 <thead>
                                 <tr>
-                                    <th scope="col"><center>Edit</center></th>
+                                    <th scope="col" className="border-left border-right"><center>&nbsp;</center></th>
                                     <th scope="col"><center>Código</center></th>
                                     <th scope="col">Nombres</th>
                                     <th scope="col">Apellidos</th>
@@ -432,7 +435,14 @@ class Main extends Component {
                                     { this.state.data.map( (item, key) => {
                                         return (
                                             <tr key = {key} >
-                                                <td><center><button onClick={() => this.edit(item)} > Edit </button></center></td>
+                                                <td className="border"><center>
+                                                    <button className="btn btn-warning btn-sm" onClick={() => this.edit(item)} > 
+                                                        <div>
+                                                            <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                        </div>
+                                                    </button>
+                                                    </center>
+                                                </td>
                                                 <td><center>{item.Codigo}</center></td>
                                                 <td>{item.Nombres}</td>
                                                 <td>{item.Apellidos}</td>
