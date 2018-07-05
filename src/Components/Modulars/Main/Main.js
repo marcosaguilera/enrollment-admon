@@ -12,9 +12,11 @@ class Main extends Component {
   constructor(props){
     super(props);
 
-    this.handleSearch    = this.handleSearch.bind(this);
-    this.handleOnChange  = this.handleOnChange.bind(this);
-    this.toggle          = this.toggle.bind(this);
+    this.handleSearch       = this.handleSearch.bind(this);
+    this.handleOnChange     = this.handleOnChange.bind(this);
+    this.handleUpdateData   = this.handleUpdateData.bind(this);
+    this.handlePutParseData = this.handlePutParseData.bind(this);
+    this.toggle             = this.toggle.bind(this);
 
     this.state = {
       objectId              : '',
@@ -110,9 +112,9 @@ class Main extends Component {
                 'X-Parse-Master-Key': 'vN7hMK7QknCPf2xeazTaILtaskHFAveqnh6NDwi6',
                 'Content-Type': 'application/json;charset=UTF-8'
             }
-          };
+        };
               
-          axios.get('https://parseapi.back4app.com/classes/EnrollmentData?limit=20&where={"Codigo":"' + this.state.search_code + '"}', axiosConfig)
+        axios.get('https://parseapi.back4app.com/classes/EnrollmentData?limit=20&where={"Codigo":"' + this.state.search_code + '"}', axiosConfig)
             .then(res => {
               console.log("Full object:");
               console.log(res.data);
@@ -131,7 +133,7 @@ class Main extends Component {
                 console.log(item);
                 console.log(this.state.data);
               })
-          })
+        })
     }else{
         let axiosConfig = {
             headers: {
@@ -139,9 +141,9 @@ class Main extends Component {
                 'X-Parse-Master-Key': 'vN7hMK7QknCPf2xeazTaILtaskHFAveqnh6NDwi6',
                 'Content-Type': 'application/json;charset=UTF-8'
             }
-          };
+        };
               
-          axios.get('https://parseapi.back4app.com/classes/EnrollmentData?limit=20', axiosConfig)
+        axios.get('https://parseapi.back4app.com/classes/EnrollmentData?limit=20', axiosConfig)
             .then(res => {
               console.log("Full object:");
               console.log(res.data);
@@ -160,10 +162,8 @@ class Main extends Component {
                 console.log(item);
                 console.log(this.state.data);
               })
-          })
+        })
     }
-
-    
   }
 
   handleOnChange(e){
@@ -258,6 +258,63 @@ class Main extends Component {
             console.log("Value " + this.state.modal_otros);
         })     
     }
+
+  }
+
+  handleUpdateData = () => {
+        var data                              = new Object();
+        data.objectId                         = this.state.modal_objectId;
+        data.Codigo                           = this.state.modal_codigo;
+        data.Apellidos                        = this.state.modal_apellidos;
+        data.Nombres                          = this.state.modal_nombres;
+        data.Derecho_Matricula_Plena          = this.state.modal_tarifa_plena;
+        data.Bibliobanco                      = this.state.modal_bibliobanco;
+        data.Derecho_por_pago_anualidades_7_5 = this.state.modal_tarifa_reducida_7_5;
+        data.Derecho_por_pago_anualidades_15  = this.state.modal_tarifa_reducida_15;
+        data.Empleado                         = this.state.modal_empleado;
+        data.Grado                            = this.state.modal_grado;
+        data.Hijo_2                           = this.state.modal_descuento_2do_hno;
+        data.Hijo_3                           = this.state.modal_descuento_3er_hno;
+        data.Hijo_4                           = this.state.modal_descuento_4to_hno;
+        data.Hijo_Exalumno                    = this.state.modal_descuento_exalumno;
+        data.Jardin_Convenio                  = this.state.modal_convenio;
+        data.SantaBarbara                     = this.state.modal_santa_barbara;
+        data.Otros                            = this.state.modal_otros;
+        console.log(data);
+        
+        var retVal = window.confirm("¿Estas seguro de realizar esta acción?");
+        if( retVal == true ){
+            this.handlePutParseData(data);
+            this.setState({
+                modal : false
+            }, () =>{
+                this.handleSearch()
+            })
+            return true;
+        }
+        else{
+            return false;
+        }
+  }
+
+  handlePutParseData = (data) => {
+    let axiosConfig = {
+        headers: {
+            'X-Parse-Application-Id': 'U8jcs4wAuoOvBeCUCy4tAQTApcfUjiGmso98wM9h',
+            'X-Parse-Master-Key': 'vN7hMK7QknCPf2xeazTaILtaskHFAveqnh6NDwi6',
+            'Content-Type': 'application/json;charset=UTF-8'
+        }
+    };
+
+    console.log('https://parseapi.back4app.com/classes/EnrollmentData/' + this.state.modal_objectId);
+
+    axios.put('https://parseapi.back4app.com/classes/EnrollmentData/' + this.state.modal_objectId , data, axiosConfig)
+         .then(res => {   
+             console.log(res);      
+         })
+         .catch(error => {
+            console.log(error);
+    });
 
   }
 
@@ -527,11 +584,10 @@ class Main extends Component {
                                     </form>
                                 </ModalBody>
                                 <ModalFooter>
-                                    <Button color="primary" onClick={this.toggle}>Actualizar</Button>
+                                    <Button color="primary" onClick={this.handleUpdateData}>Actualizar</Button>
                                     <Button color="secondary" onClick={this.toggle}>Cancelar</Button>
                                 </ModalFooter>
                             </Modal>
-
                         </div>
                 </main>
             </div>
