@@ -5,3 +5,8 @@
 #modalWindow {
     max-width: 880px !important;
 }
+
+#img_rounded{
+    margin: 0% 8%;
+    padding: 22px !important;
+}
