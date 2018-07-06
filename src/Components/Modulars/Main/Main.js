@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 // Import assets
@@ -15,6 +15,7 @@ class Main extends Component {
     super(props);
 
     this.handleSearch       = this.handleSearch.bind(this);
+    this.handleResetSearch  = this.handleResetSearch.bind(this);
     this.handleOnChange     = this.handleOnChange.bind(this);
     this.handleUpdateData   = this.handleUpdateData.bind(this);
     this.handlePutParseData = this.handlePutParseData.bind(this);
@@ -166,6 +167,14 @@ class Main extends Component {
               })
         })
     }
+  }
+
+  handleResetSearch(){
+      this.setState({
+        search_code: ''
+      }, () => {
+        this.handleSearch()
+      })
   }
 
   handleOnChange(e){
@@ -368,7 +377,7 @@ class Main extends Component {
                 <div className="sidebar-header">
                     <row>
                         <div className="col">
-                            <img id="img_rounded" className="rounded-circle" src="https://i.imgur.com/ao4s7Md.png" alt="Generic placeholder image" width="150" height="180" />
+                            <img id="img_rounded" className="rounded-circle" src="https://i.imgur.com/ao4s7Md.png" alt={'Colegio Rochester Logo'} width="150" height="180" />
                         </div>
                     </row>
                 </div>
@@ -396,15 +405,30 @@ class Main extends Component {
                                     <div style={{ color: '#333' }}>Registros de matrícula</div>
                                 </h4>
                                 <form className="form-inline">
-                                    <input 
-                                        id="student_code_search"
-                                        onChange={this.handleOnChange} 
-                                        className="form-control mr-sm-2" 
-                                        type="text"
-                                        maxLength="5"
-                                        placeholder="Código estudiante" 
-                                        aria-label="Search" />
-                                    <button className="btn btn-outline-success my-2 my-sm-0" type="search" onClick={this.handleSearch}>Buscar</button>
+                                    <div class="input-group">
+                                        <input 
+                                            id="student_code_search"
+                                            onChange={this.handleOnChange} 
+                                            className="form-control" 
+                                            type="text"
+                                            maxLength="5"
+                                            value={this.state.search_code}
+                                            placeholder="Código estudiante" 
+                                            aria-label="Search" />
+                                        <div class="input-group-append">
+
+                                            <button class="btn btn-outline-secondary" type="button" onClick={this.handleResetSearch}>
+                                                <i class="fa fa-times-circle" aria-hidden="true"></i>&nbsp;
+                                                Limpiar
+                                            </button>
+
+                                            <button className="btn btn-outline-success my-2 my-sm-0" type="search" onClick={this.handleSearch}>
+                                                <i class="fa fa-search" aria-hidden="true"></i>&nbsp;
+                                                Buscar
+                                            </button>
+
+                                        </div>
+                                    </div>
                                 </form>
                             </nav>
                             <table className="table table-hover table-bordered">
@@ -459,7 +483,7 @@ class Main extends Component {
                                     
                                     <hr />
                                     <div class="alert alert-warning" role="alert">
-                                        Los cambios aplicados serán visualizados de manera inmediata en el Liquidador de Matrícula. Antes de hacer un cambio en los registros, asegúrese que el cambio es necesario.
+                                        Los cambios aplicados serán visualizados inmediatamente en el Liquidador de Matrícula. Antes de hacer un cambio en los registros, asegúrese que este sea necesario.
                                     </div>
                                     <hr />
 
