@@ -293,7 +293,6 @@ class Main extends Component {
             }, () =>{
                 
             })
-            this.handleSearch()
             return true;
         }
         else{
@@ -314,10 +313,12 @@ class Main extends Component {
 
     axios.put('https://parseapi.back4app.com/classes/EnrollmentData/' + this.state.modal_objectId , data, axiosConfig)
          .then(res => {   
-             console.log(res);      
+             console.log(res);
+             this.handleSearch();     
          })
          .catch(error => {
             console.log(error);
+            this.handleSearch();
     });
 
   }
@@ -365,39 +366,21 @@ class Main extends Component {
             {/* Sidebar Holder */}
             <nav id="sidebar">
                 <div className="sidebar-header">
-                    <h3>Bootstrap Sidebar</h3>
+                    <row>
+                        <div className="col">
+                            <img id="img_rounded" class="rounded-circle" src="https://i.imgur.com/ao4s7Md.png" alt="Generic placeholder image" width="150" height="180" />
+                        </div>
+                    </row>
                 </div>
 
                 <ul className="list-unstyled components">
-                    <p>Dummy Heading</p>
+                    <p><center>Colegio Rochester</center></p>
                     <li className="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Home</a>
-                        <ul className="collapse list-unstyled" id="homeSubmenu">
-                            <li>
-                                <a href={null}>Home 1</a>
-                            </li>
-                            <li>
-                                <a href={null}>Home 2</a>
-                            </li>
-                            <li>
-                                <a href={null}>Home 3</a>
-                            </li>
-                        </ul>
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >Dashboard</a>
                     </li>
                     <li>
-                        <a href={null}>About</a>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Pages</a>
-                        <ul className="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href={null}>Page 1</a>
-                            </li>
-                            <li>
-                                <a href={null}>Page 2</a>
-                            </li>
-                            <li>
-                                <a href={null}>Page 3</a>
-                            </li>
-                        </ul>
+                        <a href={null}>Logs</a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" >Extras</a>
                     </li>
                     
                 </ul>
@@ -408,8 +391,10 @@ class Main extends Component {
                 <main role="main">
 
                         <div className="my-3">
-                            <nav className="navbar navbar-dark shadow-sm bg-light rounded border ">
-                                <h4><div style={{ color: 'gray' }}>Estudiantes</div></h4>
+                            <nav className="navbar navbar-dark shadow-sm bg-light rounded border" style={{ marginBottom: '20px' }}>
+                                <h4 style={{marginBottom: '0px'}}>
+                                    <div style={{ color: '#333' }}>Registros de valor de matrícula</div>
+                                </h4>
                                 <form className="form-inline">
                                     <input 
                                         id="student_code_search"
@@ -422,10 +407,10 @@ class Main extends Component {
                                     <button className="btn btn-outline-success my-2 my-sm-0" type="search" onClick={this.handleSearch}>Buscar</button>
                                 </form>
                             </nav>
-                            <table className="table table-hover ">
+                            <table className="table table-hover table-bordered">
                                 <thead>
                                 <tr>
-                                    <th scope="col" className="border-left border-right"><center>&nbsp;</center></th>
+                                    <th scope="col"><center>&nbsp;</center></th>
                                     <th scope="col"><center>Código</center></th>
                                     <th scope="col">Nombres</th>
                                     <th scope="col">Apellidos</th>
