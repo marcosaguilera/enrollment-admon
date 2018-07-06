@@ -368,13 +368,13 @@ class Main extends Component {
                 <div className="sidebar-header">
                     <row>
                         <div className="col">
-                            <img id="img_rounded" class="rounded-circle" src="https://i.imgur.com/ao4s7Md.png" alt="Generic placeholder image" width="150" height="180" />
+                            <img id="img_rounded" className="rounded-circle" src="https://i.imgur.com/ao4s7Md.png" alt="Generic placeholder image" width="150" height="180" />
                         </div>
                     </row>
                 </div>
 
                 <ul className="list-unstyled components">
-                    <p><center>Colegio Rochester</center></p>
+                <center><p>Colegio Rochester</p></center>
                     <li className="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >Dashboard</a>
                     </li>
@@ -393,7 +393,7 @@ class Main extends Component {
                         <div className="my-3">
                             <nav className="navbar navbar-dark shadow-sm bg-light rounded border" style={{ marginBottom: '20px' }}>
                                 <h4 style={{marginBottom: '0px'}}>
-                                    <div style={{ color: '#333' }}>Registros de valor de matrícula</div>
+                                    <div style={{ color: '#333' }}>Registros de matrícula</div>
                                 </h4>
                                 <form className="form-inline">
                                     <input 
@@ -440,19 +440,29 @@ class Main extends Component {
                             </table> 
 
                             <Modal id="modalWindow" isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                                <ModalHeader toggle={this.toggle}></ModalHeader>
+                                <ModalHeader className="p-3 mb-2 bg-warning text-dark" toggle={this.toggle}> Actualizar valores de matrícula </ModalHeader>
                                 <ModalBody>
-                                    <main className="shadow-sm p-3 mb-2 bg-white rounded">
+                                    <main >
                                         <div className="row">
-                                            <div className="col-12"><h3>{this.state.modal_nombres} {this.state.modal_apellidos}</h3></div>
+                                            <div className="col-2"><h5>Nombre </h5></div>
+                                            <div className="col-10"><h5>{this.state.modal_nombres} {this.state.modal_apellidos}</h5></div>
                                         </div>
                                         <div className="row">
-                                            <div className="col"><h4>Código: {this.state.modal_codigo}</h4></div>
-                                            <div className="col"><h4>{this.state.modal_grado}</h4></div>
-                                            <div className="col"></div>
-                                            <div className="col"></div>
+                                            <div className="col-2"><h5>Código </h5></div>
+                                            <div className="col-10"><h5>{this.state.modal_codigo}</h5></div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-2"><h5>Grado</h5></div>
+                                            <div className="col-10"><h5>{this.state.modal_grado}</h5></div>
                                         </div>
                                     </main>
+                                    
+                                    <hr />
+                                    <div class="alert alert-warning" role="alert">
+                                        Los cambios aplicados serán visualizados de manera inmediata en el Liquidador de Matrícula. Antes de hacer un cambio en los registros, asegúrese que el cambio es necesario.
+                                    </div>
+                                    <hr />
+
                                     <form className="py-3">
                                         <div className="row">
                                             <div className="col">
@@ -579,7 +589,7 @@ class Main extends Component {
                                         </div>
                                     </form>
                                 </ModalBody>
-                                <ModalFooter>
+                                <ModalFooter className="p-3 mb-2 bg-light text-dark">
                                     <Button color="primary" onClick={this.handleUpdateData}>Actualizar</Button>
                                     <Button color="secondary" onClick={this.toggle}>Cancelar</Button>
                                 </ModalFooter>
