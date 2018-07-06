@@ -1,6 +1,7 @@
 // Dependencies
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import { GoogleLogin } from 'react-google-login';
 
 import './Login.css';
 import './signin.css';
@@ -18,10 +19,15 @@ class Login extends Component {
   }
 
   render() {
+
+    const responseGoogle = (response) => {
+      console.log(response);
+    }
+
     return (
       <div className="Login">
 
-        <Container style={{ marginTop: '30%' }}>
+        <Container style={{ marginTop: '20%' }}>
             <Row>
               <Col xs="3"></Col>
               <Col xs="6">
@@ -42,6 +48,13 @@ class Login extends Component {
                             type="submit"
                             onClick={() => this.nextPath()}>Google Account Sign-in</button>
                     <p className="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+
+                    <GoogleLogin
+                      clientId="631753318190-3hrvsm7binkh3j4qtaohcts87kftf079.apps.googleusercontent.com"
+                      buttonText="Login"
+                      onSuccess={responseGoogle}
+                      onFailure={responseGoogle}
+                    />
                 </form>
 
               </Col>
