@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { GoogleLogin } from 'react-google-login';
+import config from '../../../Config/config.json';
 
 import './Login.css';
 import './signin.css';
@@ -45,7 +46,7 @@ class Login extends Component {
                       </label>
                     </div>
                     <GoogleLogin className="btn btn-primary btn-block"
-                      clientId="631753318190-3hrvsm7binkh3j4qtaohcts87kftf079.apps.googleusercontent.com"
+                      clientId={config.GOOGLE_CLIENT_ID}
                       buttonText="Google Account Sign-in"
                       onSuccess={responseGoogle}
                       onFailure={responseGoogle}
