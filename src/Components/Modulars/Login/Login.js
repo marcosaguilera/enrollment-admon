@@ -27,7 +27,7 @@ class Login extends Component {
     return (
       <div className="Login">
 
-        <Container style={{ marginTop: '20%' }}>
+        <Container style={{ paddingTop: '10%' }}>
             <Row>
               <Col xs="3"></Col>
               <Col xs="6">
@@ -44,17 +44,15 @@ class Login extends Component {
                         <input type="checkbox" value="remember-me"/> Remember me
                       </label>
                     </div>
-                    <button className="btn btn-lg btn-primary btn-block" 
-                            type="submit"
-                            onClick={() => this.nextPath()}>Google Account Sign-in</button>
-                    <p className="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-
-                    <GoogleLogin
+                    <GoogleLogin className="btn btn-primary btn-block"
                       clientId="631753318190-3hrvsm7binkh3j4qtaohcts87kftf079.apps.googleusercontent.com"
-                      buttonText="Login"
+                      buttonText="Google Account Sign-in"
                       onSuccess={responseGoogle}
                       onFailure={responseGoogle}
                     />
+                    <p className="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+
+                    
                 </form>
 
               </Col>
