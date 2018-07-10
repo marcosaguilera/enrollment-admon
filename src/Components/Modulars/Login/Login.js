@@ -3,14 +3,20 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { GoogleLogin } from 'react-google-login';
 import config from '../../../Config/config.json';
+import PropTypes from 'prop-types';
 
 import './Login.css';
 import './signin.css';
 
 class Login extends Component {
+  
+  static propTypes = {
+    body: PropTypes.object.isRequired
+  }
+
   constructor(props){
     super(props);
-
+    
     this.nextPath = this.nextPath.bind(this);
   }
   
@@ -20,6 +26,9 @@ class Login extends Component {
   }
 
   render() {
+
+    const { body } = this.props;
+    console.log(this.props);
 
     const responseGoogle = (response) => {
       console.log(response);
@@ -37,6 +46,7 @@ class Login extends Component {
       if(email_user.includes("@rochester.edu.co")){
 
         window.alert("ok");
+        this.nextPath();
 
       }else{
 
