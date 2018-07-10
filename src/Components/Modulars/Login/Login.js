@@ -23,6 +23,28 @@ class Login extends Component {
 
     const responseGoogle = (response) => {
       console.log(response);
+      console.log(response.El);
+      console.log(response.profileObj);
+      console.log(response.profileObj.email);
+
+      var email_user = response.profileObj.email; 
+      var familyName = response.profileObj.familyName; 
+      var givenName  = response.profileObj.givenName; 
+      var googleId   = response.profileObj.googleId; 
+      var imageUrl   = response.profileObj.imageUrl; 
+      var name       = response.profileObj.name;
+      
+      if(email_user.includes("@rochester.edu.co")){
+
+        window.alert("ok");
+
+      }else{
+
+        window.alert("neh!");
+
+      }
+      
+      
     }
 
     return (
