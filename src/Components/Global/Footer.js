@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 //Assets
-import './css/Footer.css';
+import '../Global/assets/css/Footer.css';
 
 class Footer extends Component {
   static propTypes = {
@@ -16,7 +16,7 @@ class Footer extends Component {
       <div className="Footer bg-light text-dark">
         <footer className="footer">
             <div className="container">
-              <p>{copyright} | <a href="https://rochester.edu.co/politica-proteccion-datos/" rel="noopener noreferrer" target="_blank">Protección de Datos</a> </p> 
+              <p id="pfooter">{copyright} | <a href="https://rochester.edu.co/politica-proteccion-datos/" rel="noopener noreferrer" target="_blank">Protección de Datos</a> </p> 
             </div>
         </footer>
       </div>

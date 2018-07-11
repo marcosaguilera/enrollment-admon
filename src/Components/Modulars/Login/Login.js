@@ -5,8 +5,12 @@ import { GoogleLogin } from 'react-google-login';
 import config from '../../../Config/config.json';
 import PropTypes from 'prop-types';
 
+// Assets
 import './Login.css';
 import './signin.css';
+
+// Components
+import Footer from '../../Global/Footer'
 
 class Login extends Component {
   
@@ -18,17 +22,32 @@ class Login extends Component {
     super(props);
     
     this.nextPath = this.nextPath.bind(this);
+
+    this.state = {
+      isAuthorize: false,
+      isRochesterUser: false
+    }
+  }
+
+  componentDidMount(){
+    this.setState({
+      isAuthorize: false,
+      isRochesterUser: false
+    }, () => {
+      console.log("logged-in status: " + this.state.isAuthorize + " && " + this.state.isRochesterUser);
+    })
   }
   
   nextPath = () => {
-    console.log(this.props);
-    this.props.history.push('/main');
+    if(this.state.isAuthorize === true && this.state.isRochesterUser === true){
+      console.log(this.props);
+      this.props.history.push('/main');
+    }else{
+      // nothing happens here
+    }
   }
 
   render() {
-
-    const { body } = this.props;
-    console.log(this.props);
 
     const responseGoogle = (response) => {
       console.log(response);
@@ -43,18 +62,20 @@ class Login extends Component {
       var imageUrl   = response.profileObj.imageUrl; 
       var name       = response.profileObj.name;
       
-      if(email_user.includes("@rochester.edu.co")){
+        if(email_user.includes("@rochester.edu.co")){
+          
+          console.log("Ok. Rochester account :)");
+          //window.alert("ok");
+          this.setState({
+            isAuthorize: true,
+            isRochesterUser: true
+          }, () => {
+            this.nextPath();
+          })
 
-        window.alert("ok");
-        this.nextPath();
-
-      }else{
-
-        window.alert("neh!");
-
-      }
-      
-      
+        }else{
+          window.alert("Nope. Isn't a Rochester account :(");
+        }
     }
 
     return (
@@ -93,6 +114,9 @@ class Login extends Component {
             </Row>
             
         </Container>
+        <footer id="footer-bottom">
+          <Footer copyright="&copy;Colegio Rochester 2018" />
+        </footer>
       </div>
     );
   }

@@ -4,8 +4,22 @@
 }
 
 footer.footer {
-  height: 118px;
+  height: 35px;
   background-color: #f8f9fa !important;
 }
 
+#footer-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+#pfooter{
+    font-weight: 300 !important; 
+    font-size: inherit !important;
+    line-height: 0.7em !important;
+    color: #999 !important;
+    margin-top: 15px;
+}
 

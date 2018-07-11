@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+// Components
+import Footer from '../../Global/Footer'
 
 // Import assets
 import './style5.css';
@@ -107,7 +109,7 @@ class Main extends Component {
   }
 
   handleSearch(){
-
+    console.log("===> search code" + this.state.search_code.length);
     if(this.state.search_code.length > 0){
         let axiosConfig = {
             headers: {
@@ -368,6 +370,11 @@ class Main extends Component {
     });
   }
 
+  logoutPath = () => {
+      console.log(this.props);
+      this.props.history.push('/login');
+  }
+
   render() {
     return (
   
@@ -383,13 +390,16 @@ class Main extends Component {
                 </div>
 
                 <ul className="list-unstyled components">
-                <center><p>Colegio Rochester</p></center>
+                    <center><h4>Colegio Rochester</h4></center>
+                    <center><p id="p-custom">Hola, Yuri Fuquen</p></center>
                     <li className="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >Dashboard</a>
+                        <a href="#dashboard" data-toggle="collapse" aria-expanded="false" >Dashboard</a>
                     </li>
                     <li>
                         <a href={null}>Logs</a>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" >Extras</a>
+                    </li>
+                    <li>
+                        <center><button type="button" onClick={() => this.logoutPath()} className="btn btn-link"><i className="fa fa-sign-out"></i>&nbsp;Cerrar sesión</button></center>
                     </li>
                     
                 </ul>
@@ -405,7 +415,7 @@ class Main extends Component {
                                     <div style={{ color: '#333' }}>Registros de matrícula</div>
                                 </h4>
                                 <form className="form-inline">
-                                    <div class="input-group">
+                                    <div className="input-group">
                                         <input 
                                             id="student_code_search"
                                             onChange={this.handleOnChange} 
@@ -415,15 +425,15 @@ class Main extends Component {
                                             value={this.state.search_code}
                                             placeholder="Código estudiante" 
                                             aria-label="Search" />
-                                        <div class="input-group-append">
+                                        <div className="input-group-append">
 
-                                            <button class="btn btn-outline-secondary" type="button" onClick={this.handleResetSearch}>
-                                                <i class="fa fa-times-circle" aria-hidden="true"></i>&nbsp;
+                                            <button className="btn btn-outline-secondary" type="button" onClick={this.handleResetSearch}>
+                                                <i className="fa fa-times-circle" aria-hidden="true"></i>&nbsp;
                                                 Limpiar
                                             </button>
 
-                                            <button className="btn btn-outline-success my-2 my-sm-0" type="search" onClick={this.handleSearch}>
-                                                <i class="fa fa-search" aria-hidden="true"></i>&nbsp;
+                                            <button className="btn btn-outline-success my-2 my-sm-0" type="button" onClick={this.handleResetSearch}>
+                                                <i className="fa fa-search" aria-hidden="true"></i>&nbsp;
                                                 Buscar
                                             </button>
 
@@ -482,7 +492,7 @@ class Main extends Component {
                                     </main>
                                     
                                     <hr />
-                                    <div class="alert alert-warning" role="alert">
+                                    <div className="alert alert-warning" role="alert">
                                         Los cambios aplicados serán visualizados inmediatamente en el Liquidador de Matrícula. Antes de hacer un cambio en los registros, asegúrese que este sea necesario.
                                     </div>
                                     <hr />
@@ -621,6 +631,9 @@ class Main extends Component {
                         </div>
                 </main>
             </div>
+            <footer id="footer-bottom">
+                <Footer copyright="&copy;Colegio Rochester 2018" />
+            </footer>
         </div>
     );
   }
