@@ -22,6 +22,7 @@ class Main extends Component {
     this.handleUpdateData   = this.handleUpdateData.bind(this);
     this.handlePutParseData = this.handlePutParseData.bind(this);
     this.toggle             = this.toggle.bind(this);
+    this.saveLog            = this.saveLog.bind(this);
 
     this.state = {
       objectId              : '',
@@ -70,12 +71,36 @@ class Main extends Component {
       modal_santa_barbara         : 0,
       modal_convenio              : 0,
       modal_otros                 : 0,
-      modal_grado                 : ''
+      modal_grado                 : '',
 
+      // User Info
+      fullName                    : '',
+      name                        : '',
+      lastName                    : '',
+      email                       : '',
+      googleId                    : '',
+      imageUrl                    : '',
+      role                        : ''
     };
   }
 
   componentDidMount(){
+
+    var googleAccountObj = this.props.location.state;
+    console.log("Services data: " + JSON.stringify(googleAccountObj));
+
+    this.setState({
+        fullName : googleAccountObj.fullName,
+        name     : googleAccountObj.name,
+        lastName : googleAccountObj.lastName,
+        email    : googleAccountObj.email,
+        googleId : googleAccountObj.googleId,
+        imageUrl : googleAccountObj.imageUrl,
+
+    }, () =>{
+
+    })
+
 
     let axiosConfig = {
       headers: {
@@ -322,16 +347,40 @@ class Main extends Component {
 
     console.log('https://parseapi.back4app.com/classes/EnrollmentData/' + this.state.modal_objectId);
 
+    var logData     = {};
+    logData.action  = "Admin update action";
+    logData.codigo  = this.state.email;
+    logData.data    = data;
+
     axios.put('https://parseapi.back4app.com/classes/EnrollmentData/' + this.state.modal_objectId , data, axiosConfig)
          .then(res => {   
              console.log(res);
-             this.handleSearch();     
+             this.handleSearch();
+             this.saveLog(logData);     
          })
          .catch(error => {
             console.log(error);
             this.handleSearch();
     });
+  }
 
+  saveLog(data){
+    let axiosConfig = {
+        headers: {
+            'X-Parse-Application-Id': 'U8jcs4wAuoOvBeCUCy4tAQTApcfUjiGmso98wM9h',
+            'X-Parse-Master-Key'    : 'vN7hMK7QknCPf2xeazTaILtaskHFAveqnh6NDwi6',
+            'Content-Type'          : 'application/json;charset=UTF-8'
+        },
+      };
+  
+      axios.post('https://parseapi.back4app.com/classes/EventsLog', data, axiosConfig)
+           .then(res => {   
+               console.log(res);      
+           })
+           .catch(error => {
+              console.log(error);
+           });
+  
   }
 
   edit = (data) => { 
@@ -361,7 +410,6 @@ class Main extends Component {
         } , () =>  {
             this.toggle();
         })
-        
   }
 
   toggle() {
@@ -384,14 +432,17 @@ class Main extends Component {
                 <div className="sidebar-header">
                     <row>
                         <div className="col">
-                            <img id="img_rounded" className="rounded-circle" src="https://i.imgur.com/ao4s7Md.png" alt={'Colegio Rochester Logo'} width="150" height="180" />
+                            <img id="img_rounded" 
+                                 className="rounded-circle border" 
+                                 src={this.state.imageUrl} 
+                                 alt={'Colegio Rochester Logo'} width="120" height="120" />
                         </div>
                     </row>
                 </div>
 
                 <ul className="list-unstyled components">
                     <center><h4>Colegio Rochester</h4></center>
-                    <center><p id="p-custom">Hola, Yuri Fuquen</p></center>
+                    <center><p id="p-custom">Hola, {this.state.fullName}</p></center>
                     <li className="active">
                         <a href="#dashboard" data-toggle="collapse" aria-expanded="false" >Dashboard</a>
                     </li>
@@ -432,7 +483,7 @@ class Main extends Component {
                                                 Limpiar
                                             </button>
 
-                                            <button className="btn btn-outline-success my-2 my-sm-0" type="button" onClick={this.handleResetSearch}>
+                                            <button className="btn btn-outline-success my-2 my-sm-0" type="button" onClick={this.handleSearch}>
                                                 <i className="fa fa-search" aria-hidden="true"></i>&nbsp;
                                                 Buscar
                                             </button>
@@ -448,7 +499,7 @@ class Main extends Component {
                                     <th scope="col"><center>Código</center></th>
                                     <th scope="col">Nombres</th>
                                     <th scope="col">Apellidos</th>
-                                    <th scope="col">Grado</th>
+                                    <th scope="col"><center>Grado</center></th>
                                 </tr>
                                 </thead>
                                 <tbody id="cursorPointer">
@@ -466,7 +517,7 @@ class Main extends Component {
                                                 <td><center>{item.Codigo}</center></td>
                                                 <td>{item.Nombres}</td>
                                                 <td>{item.Apellidos}</td>
-                                                <td>{item.Grado}</td>
+                                                <td><center>{item.Grado}</center></td>
                                             </tr>
                                         )
                                     })}
@@ -631,9 +682,6 @@ class Main extends Component {
                         </div>
                 </main>
             </div>
-            <footer id="footer-bottom">
-                <Footer copyright="&copy;Colegio Rochester 2018" />
-            </footer>
         </div>
     );
   }
