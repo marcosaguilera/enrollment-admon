@@ -126,7 +126,7 @@ class Login extends Component {
     return (
       <div className="Login">
 
-        <Container style={{ paddingTop: '10%' }}>
+        <Container style={{ paddingTop: '5%' }}>
             <Row>
               <Col xs="3"></Col>
               <Col xs="6">
