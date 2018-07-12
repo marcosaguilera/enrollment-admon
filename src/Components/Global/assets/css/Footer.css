@@ -20,6 +20,23 @@ footer.footer {
     font-size: inherit !important;
     line-height: 0.7em !important;
     color: #999 !important;
-    margin-top: 15px;
+    margin-top: 24px;
+}
+
+/* Make Footer Sticky */
+#footer_container {
+  background: #eee;
+  /*border: 1px solid #666;*/
+  bottom: 0;
+  height: 60px;
+  left: 0;
+  position: fixed;
+  width: 100%;
+}
+#footer {
+  line-height: 60px;
+  margin: 0 auto;
+  width: 940px;
+  text-align: center;
 }
 
