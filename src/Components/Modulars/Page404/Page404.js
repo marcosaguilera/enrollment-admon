@@ -21,6 +21,7 @@ class Page404 extends Component {
           <div>
             <center>
               <h1 className="display-2">¯\_(ツ)_/¯</h1>
+              {/*<h1 className="display-2">🖖</h1>*/}
               <h1>Page404</h1>
               <h3 className="display-5 py-3">Ups! something went wrong. Let me help you.</h3>
               <button type="button" 
