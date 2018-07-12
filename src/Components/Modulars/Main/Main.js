@@ -478,7 +478,7 @@ class Main extends Component {
                                             aria-label="Search" />
                                         <div className="input-group-append">
 
-                                            <button className="btn btn-outline-secondary" type="search" onClick={this.handleResetSearch}>
+                                            <button className="btn btn-outline-secondary" type="button" onClick={this.handleResetSearch}>
                                                 <i className="fa fa-times-circle" aria-hidden="true"></i>&nbsp;
                                                 Limpiar
                                             </button>
